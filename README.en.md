@@ -9,8 +9,7 @@ AI tools generate piles of markdown — plans, specs, changelogs, meeting notes.
 ![Go](https://img.shields.io/badge/Go-1.24+-00ADD8?style=flat&logo=go)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-<!-- TODO: demo GIF — browse folders, hover preview, enter reader, search, outline -->
-<!-- ![Demo](assets/demo.gif) -->
+![Demo](assets/demo.gif)
 
 ## How it works
 
@@ -19,16 +18,12 @@ AI tools generate piles of markdown — plans, specs, changelogs, meeting notes.
 3. Press `Enter` to read in detail — search, outline, section jump
 4. Close and return to your session
 
-<!-- TODO: screenshot — browser + preview panel side by side -->
-<!-- ![Screenshot](assets/screenshot.png) -->
 
 ## Features
 
 ### Hover preview
 Move your cursor over any markdown file — the preview panel renders it immediately. No need to open anything.
 
-<!-- TODO: GIF — cursor moving over files, preview changing -->
-<!-- ![Hover preview](assets/hover-preview.gif) -->
 
 ### Reader mode
 Press `Enter` to enter a full reader view with search (`/`), outline (`o`), section jumping (`[`/`]`), and adjustable width (`-`/`=`).
@@ -47,8 +42,6 @@ One keybinding to pop up skimd over your current session. Works great alongside 
 bind v display-popup -E -w 92% -h 88% -d "#{pane_current_path}" "skimd ."
 ```
 
-<!-- TODO: GIF — tmux popup appearing over a Claude session -->
-<!-- ![Popup](assets/popup.gif) -->
 
 ### More
 - **Auto-reload**: Detects file changes and re-renders
