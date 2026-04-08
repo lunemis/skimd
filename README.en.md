@@ -60,6 +60,9 @@ bind v display-popup -E -w 92% -h 88% -d "#{pane_current_path}" "skimd ."
 ## Quick Start
 
 ```bash
+# One-line interactive installer (recommended)
+curl -sSL https://raw.githubusercontent.com/lunemis/skimd/main/install.sh | bash
+
 # Homebrew
 brew install lunemis/tap/skimd
 

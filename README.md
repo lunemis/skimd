@@ -34,18 +34,16 @@
 
 ## 설치
 
-### 1. `go install`
+### 인터랙티브 설치 (추천)
 
-원격 저장소가 공개된 뒤에는 아래 방식이 가장 간단합니다.
+```bash
+curl -sSL https://raw.githubusercontent.com/lunemis/skimd/main/install.sh | bash
+```
+
+### `go install`
 
 ```bash
 go install github.com/lunemis/skimd/cmd/skimd@latest
-```
-
-로컬 개발 중에는 저장소 루트에서:
-
-```bash
-go install ./cmd/skimd
 ```
 
 ### 2. 소스에서 빌드
