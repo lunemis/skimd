@@ -123,7 +123,11 @@ setup_keybind() {
     else
         echo "$line" >> "$conf"
         ok "Keybinding added to ${conf}: prefix + v"
-        info "Reload tmux config: tmux source-file ${conf}"
+        if [ -n "${TMUX:-}" ]; then
+            tmux source-file "$conf" 2>/dev/null && ok "tmux config reloaded"
+        else
+            info "Reload tmux config: tmux source-file ${conf}"
+        fi
     fi
 }
 
