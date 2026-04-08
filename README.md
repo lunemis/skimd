@@ -128,6 +128,12 @@ skimd /path/to/docs
 skimd /path/to/file.md
 ```
 
+번들된 샘플 문서로 체험:
+
+```bash
+skimd assets/sample-docs
+```
+
 ## 추천 사용 흐름
 
 1. AI가 문서를 생성한 디렉토리에서 tmux popup으로 `skimd`를 연다.

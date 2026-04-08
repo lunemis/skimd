@@ -81,6 +81,12 @@ skimd /path/to/docs      # browse specific directory
 skimd README.md           # open a file directly
 ```
 
+Try the bundled sample docs:
+
+```bash
+skimd assets/sample-docs
+```
+
 ## Keybindings
 
 ### Browser
