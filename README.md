@@ -2,7 +2,10 @@
 
 터미널과 SSH 환경에서 마크다운 문서를 빠르게 검토하기 위한 TUI markdown viewer입니다.
 
+[English](README.en.md)
+
 ![Go](https://img.shields.io/badge/Go-1.24+-00ADD8?style=flat&logo=go)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 `skimd`는 이런 흐름을 겨냥합니다.
 

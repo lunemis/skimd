@@ -11,13 +11,22 @@ import (
 	"github.com/lunemis/skimd/internal/ui"
 )
 
+var version = "dev"
+
 func main() {
 	var printBinding bool
 	var tmuxKey string
+	var showVersion bool
 
 	flag.BoolVar(&printBinding, "print-tmux-binding", false, "print a tmux popup binding snippet")
 	flag.StringVar(&tmuxKey, "tmux-key", "v", "tmux key for the popup binding")
+	flag.BoolVar(&showVersion, "version", false, "print version and exit")
 	flag.Parse()
+
+	if showVersion {
+		fmt.Printf("skimd %s\n", version)
+		return
+	}
 
 	if printBinding {
 		executable, err := os.Executable()
