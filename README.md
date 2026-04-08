@@ -112,6 +112,8 @@ make print-tmux-binding
 bind v display-popup -E -w 92% -h 88% -d "#{pane_current_path}" "#{HOME}/go/bin/skimd ."
 ```
 
+![Popup](assets/popup.gif)
+
 ## 사용법
 
 현재 디렉토리에서 시작:

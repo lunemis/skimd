@@ -44,6 +44,8 @@ One keybinding to pop up skimd over your current session. Works great alongside 
 bind v display-popup -E -w 92% -h 88% -d "#{pane_current_path}" "skimd ."
 ```
 
+![Popup](assets/popup.gif)
+
 ### More
 - **Auto-reload**: Detects file changes and re-renders
 - **Position restore**: Remembers scroll position when switching between files
