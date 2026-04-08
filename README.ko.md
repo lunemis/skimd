@@ -149,6 +149,19 @@ skimd assets/sample-docs
 5. 같은 폴더 안에서 다른 문서를 열었다가 다시 돌아와도 읽던 위치가 유지된다.
 6. popup을 닫고 `mux`나 원래 세션으로 복귀한다.
 
+## mux + skimd 워크플로우
+
+AI 코딩 세션 매니저 [mux](https://github.com/lunemis/mux)와 함께 쓰면 tmux 안에서 모든 작업이 완결됩니다.
+
+- `prefix+m` → **mux** — AI 세션 간 전환 (라이브 프리뷰로 어떤 세션이 뭘 하는지 즉시 확인)
+- `prefix+v` → **skimd** — AI가 생성한 문서를 빠르게 검토
+
+```
+Claude가 문서 생성 → prefix+v로 skimd 열어서 확인 → prefix+m으로 다른 세션 전환
+```
+
+![mux + skimd workflow](assets/workflow.gif)
+
 ## 키 바인딩
 
 ### Browser

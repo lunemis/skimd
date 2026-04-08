@@ -53,6 +53,19 @@ bind v display-popup -E -w 92% -h 88% -d "#{pane_current_path}" "skimd ."
 - **Adaptive width**: `-`/`=` to adjust reader width
 - **File filter**: `a` to toggle between markdown-only and all files
 
+## Works with mux
+
+Pair with [mux](https://github.com/lunemis/mux) for a complete tmux-native AI development workflow.
+
+- `prefix+m` → **mux** — switch between AI coding sessions with live preview
+- `prefix+v` → **skimd** — review AI-generated docs on the fly
+
+```
+Claude generates docs → prefix+v to skim → prefix+m to switch sessions
+```
+
+![mux + skimd workflow](assets/workflow.gif)
+
 ## Quick Start
 
 ```bash
