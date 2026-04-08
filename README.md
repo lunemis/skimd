@@ -7,6 +7,8 @@
 ![Go](https://img.shields.io/badge/Go-1.24+-00ADD8?style=flat&logo=go)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
+![Demo](assets/demo.gif)
+
 `skimd`는 이런 흐름을 겨냥합니다.
 
 - AI가 만든 마크다운 문서가 여러 개 쌓인다
@@ -24,7 +26,9 @@
 - **Reader Mode**: `Enter`로 깊게 읽는 모드 진입
 - **Browser Filter**: browser에서는 `/`로 파일명 실시간 필터링
 - **문서 검색**: reader에서는 `/`, `n`, `N`으로 본문 검색
+  ![Search](assets/search.gif)
 - **Outline View**: `o`로 full outline / side outline / 닫기 전환
+  ![Outline](assets/outline.gif)
 - **Section Jump**: `[` / `]`로 이전/다음 heading 이동
 - **Adaptive Reader Width**: `-` / `=`로 reader 본문 폭 조절
 - **Zen Mode**: `z`로 좌측 패널 숨김/복구

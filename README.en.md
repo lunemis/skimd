@@ -18,21 +18,23 @@ AI tools generate piles of markdown — plans, specs, changelogs, meeting notes.
 3. Press `Enter` to read in detail — search, outline, section jump
 4. Close and return to your session
 
-
 ## Features
 
 ### Hover preview
 Move your cursor over any markdown file — the preview panel renders it immediately. No need to open anything.
 
-
 ### Reader mode
 Press `Enter` to enter a full reader view with search (`/`), outline (`o`), section jumping (`[`/`]`), and adjustable width (`-`/`=`).
+
+### Search
+`/` to search in browser (filename filter) or reader (full-text search). `n`/`N` to cycle matches.
+
+![Search](assets/search.gif)
 
 ### Outline view
 Toggle between full outline (navigate + jump), side outline (passive position marker), or hidden.
 
-### Search
-`/` to search in browser (filename filter) or reader (full-text search). `n`/`N` to cycle matches.
+![Outline](assets/outline.gif)
 
 ### tmux popup integration
 One keybinding to pop up skimd over your current session. Works great alongside [mux](https://github.com/lunemis/mux).
@@ -41,7 +43,6 @@ One keybinding to pop up skimd over your current session. Works great alongside 
 # Add to ~/.tmux.conf (or run: skimd --print-tmux-binding)
 bind v display-popup -E -w 92% -h 88% -d "#{pane_current_path}" "skimd ."
 ```
-
 
 ### More
 - **Auto-reload**: Detects file changes and re-renders
