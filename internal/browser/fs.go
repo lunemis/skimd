@@ -15,6 +15,41 @@ var markdownExtensions = map[string]struct{}{
 	".mkd":      {},
 }
 
+var textExtensions = map[string]string{
+	".txt":        "text",
+	".yaml":       "yaml",
+	".yml":        "yaml",
+	".json":       "json",
+	".toml":       "toml",
+	".xml":        "xml",
+	".csv":        "csv",
+	".tsv":        "tsv",
+	".env":        "bash",
+	".ini":        "ini",
+	".cfg":        "ini",
+	".conf":       "ini",
+	".properties": "properties",
+	".log":        "text",
+	".sh":         "bash",
+	".bash":       "bash",
+	".zsh":        "bash",
+	".fish":       "fish",
+	".py":         "python",
+	".go":         "go",
+	".js":         "javascript",
+	".ts":         "typescript",
+	".rs":         "rust",
+	".rb":         "ruby",
+	".lua":        "lua",
+	".sql":        "sql",
+	".html":       "html",
+	".css":        "css",
+	".scss":       "scss",
+	".dockerfile": "dockerfile",
+	".gitignore":  "text",
+	".editorconfig": "ini",
+}
+
 type ReadOptions struct {
 	ShowAllFiles bool
 }
@@ -22,6 +57,34 @@ type ReadOptions struct {
 func IsMarkdownFile(name string) bool {
 	_, ok := markdownExtensions[strings.ToLower(filepath.Ext(name))]
 	return ok
+}
+
+func IsTextFile(name string) bool {
+	_, ok := textExtensions[strings.ToLower(filepath.Ext(name))]
+	if ok {
+		return true
+	}
+	lower := strings.ToLower(filepath.Base(name))
+	switch lower {
+	case "dockerfile", "makefile", "rakefile", "gemfile", "procfile", "justfile":
+		return true
+	}
+	return false
+}
+
+func TextFileLang(name string) string {
+	if lang, ok := textExtensions[strings.ToLower(filepath.Ext(name))]; ok {
+		return lang
+	}
+	lower := strings.ToLower(filepath.Base(name))
+	switch lower {
+	case "dockerfile":
+		return "dockerfile"
+	case "makefile", "justfile":
+		return "makefile"
+	default:
+		return "text"
+	}
 }
 
 func ExpandPath(path string) (string, error) {
@@ -120,6 +183,11 @@ func ReadDirectory(dir string, options ReadOptions) ([]Entry, error) {
 			item.Kind = EntryDirectory
 		case IsMarkdownFile(entry.Name()):
 			item.Kind = EntryMarkdown
+		case IsTextFile(entry.Name()):
+			if !options.ShowAllFiles {
+				continue
+			}
+			item.Kind = EntryText
 		default:
 			if !options.ShowAllFiles {
 				continue
@@ -158,7 +226,9 @@ func sortRank(kind EntryKind) int {
 		return 1
 	case EntryMarkdown:
 		return 2
-	default:
+	case EntryText:
 		return 3
+	default:
+		return 4
 	}
 }

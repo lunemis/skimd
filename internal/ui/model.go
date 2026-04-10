@@ -140,7 +140,14 @@ func loadDirectoryCmd(path, focus string, showAll bool) tea.Cmd {
 
 func renderPreviewCmd(renderer *render.Renderer, path string, width int) tea.Cmd {
 	return func() tea.Msg {
-		doc, err := renderer.RenderFile(path, width)
+		var doc render.Document
+		var err error
+		if browser.IsTextFile(path) {
+			lang := browser.TextFileLang(path)
+			doc, err = renderer.RenderTextFile(path, width, lang)
+		} else {
+			doc, err = renderer.RenderFile(path, width)
+		}
 		return previewLoadedMsg{
 			path:  path,
 			width: width,
@@ -347,14 +354,14 @@ func (m Model) updateBrowser(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m.enterDirectory(entry.Path, filepath.Base(m.currentDir))
 		case entry.IsDirectory():
 			return m.enterDirectory(entry.Path, "")
-		case entry.IsMarkdown():
+		case entry.IsViewable():
 			m.readerMode = true
 			m.zenMode = false
 			m.focus = focusPreview
 			m.status = m.previewSummary()
 			return m.requestPreview(entry.Path)
 		default:
-			m.status = "Not a markdown file: " + entry.Name
+			m.status = "Not a viewable file: " + entry.Name
 			return m, nil
 		}
 	case "r":
@@ -777,7 +784,7 @@ func (m Model) syncHoverPreview() (tea.Model, tea.Cmd) {
 	}
 
 	entry, ok := m.currentEntry()
-	if !ok || !entry.IsMarkdown() {
+	if !ok || !entry.IsViewable() {
 		m.clearPreview()
 		m.status = m.currentEntrySummary()
 		return m, nil
@@ -1133,6 +1140,9 @@ func (m Model) formatEntryRow(entry browser.Entry, selected bool, width int) str
 		style = lipgloss.NewStyle().Foreground(colorDir)
 	case browser.EntryMarkdown:
 		icon = "•"
+		style = lipgloss.NewStyle().Foreground(colorMarkdown)
+	case browser.EntryText:
+		icon = "◦"
 		style = lipgloss.NewStyle().Foreground(colorMarkdown)
 	}
 

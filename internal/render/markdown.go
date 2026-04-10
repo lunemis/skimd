@@ -54,6 +54,44 @@ func NewRenderer(options Options) *Renderer {
 	}
 }
 
+func (r *Renderer) RenderTextFile(path string, width int, lang string) (Document, error) {
+	info, err := os.Stat(path)
+	if err != nil {
+		return Document{}, err
+	}
+
+	width = max(width, 20)
+	if cached, ok := r.cache.Get(path, width, info.ModTime()); ok {
+		return cached, nil
+	}
+
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return Document{}, err
+	}
+
+	source := normalizeLineEndings(string(data))
+	sourceLines := splitSourceLines(source)
+
+	wrapped := "```" + lang + "\n" + source + "\n```"
+	content, fallback := r.render(wrapped, width)
+
+	doc := Document{
+		Path:       path,
+		Title:      filepath.Base(path),
+		Content:    content,
+		Width:      width,
+		Size:       info.Size(),
+		ModTime:    info.ModTime(),
+		Fallback:   fallback,
+		LineCount:  len(sourceLines),
+		SourceText: source,
+	}
+
+	r.cache.Set(doc)
+	return doc, nil
+}
+
 func (r *Renderer) RenderFile(path string, width int) (Document, error) {
 	info, err := os.Stat(path)
 	if err != nil {

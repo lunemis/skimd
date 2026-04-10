@@ -774,14 +774,14 @@ func TestModelReviewModePrefersDirectoryWhenPresentAndCanShowAllFiles(t *testing
 	model, _ = m.Update(dirMsg)
 	m = model.(Model)
 
-	foundOther := false
+	foundText := false
 	for _, item := range m.entries {
-		if item.Name == "notes.txt" && item.Kind == browser.EntryOther {
-			foundOther = true
+		if item.Name == "notes.txt" && item.Kind == browser.EntryText {
+			foundText = true
 			break
 		}
 	}
-	if !foundOther {
+	if !foundText {
 		t.Fatalf("expected notes.txt to appear in all-files mode")
 	}
 }

@@ -8,6 +8,7 @@ const (
 	EntryParent EntryKind = iota
 	EntryDirectory
 	EntryMarkdown
+	EntryText
 	EntryOther
 )
 
@@ -29,6 +30,14 @@ func (e Entry) IsDirectory() bool {
 
 func (e Entry) IsMarkdown() bool {
 	return e.Kind == EntryMarkdown
+}
+
+func (e Entry) IsText() bool {
+	return e.Kind == EntryText
+}
+
+func (e Entry) IsViewable() bool {
+	return e.Kind == EntryMarkdown || e.Kind == EntryText
 }
 
 func (e Entry) DisplayName() string {

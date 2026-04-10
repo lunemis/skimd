@@ -66,15 +66,15 @@ func TestReadDirectoryShowAllIncludesOtherFiles(t *testing.T) {
 		t.Fatalf("ReadDirectory() error = %v", err)
 	}
 
-	foundOther := false
+	foundText := false
 	for _, entry := range entries {
-		if entry.Kind == EntryOther && entry.Name == "plain.txt" {
-			foundOther = true
+		if entry.Kind == EntryText && entry.Name == "plain.txt" {
+			foundText = true
 			break
 		}
 	}
-	if !foundOther {
-		t.Fatalf("expected other file to be included when ShowAllFiles is true")
+	if !foundText {
+		t.Fatalf("expected text file to be included when ShowAllFiles is true")
 	}
 }
 

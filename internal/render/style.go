@@ -61,6 +61,8 @@ func readerStyleConfig() glamouransi.StyleConfig {
 	style.CodeBlock.Color = stringPtr("#cbd5e1")
 	if style.CodeBlock.Chroma != nil {
 		style.CodeBlock.Chroma.Background.BackgroundColor = stringPtr("#111827")
+		style.CodeBlock.Chroma.Error.Color = stringPtr("#cbd5e1")
+		style.CodeBlock.Chroma.Error.BackgroundColor = stringPtr("#111827")
 		style.CodeBlock.Chroma.Comment.Color = stringPtr("#6b7280")
 		style.CodeBlock.Chroma.Keyword.Color = stringPtr("#7dd3fc")
 		style.CodeBlock.Chroma.NameFunction.Color = stringPtr("#86efac")

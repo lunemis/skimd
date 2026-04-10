@@ -33,10 +33,12 @@ curl -H "Authorization: Bearer <token>" http://localhost:8080/api/users
 
 ### Create a user
 
-```json
+```
 POST /api/users
 Content-Type: application/json
+```
 
+```json
 {
   "name": "Alice Kim",
   "email": "alice@example.com",
